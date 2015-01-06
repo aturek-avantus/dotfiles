@@ -1,20 +1,20 @@
 [user]
-	name = Alex Turek
-	email = alex.turek@gmail.com
+    name = Alex Turek
+    email = alex@whitepages.com
 [alias]
-	co = checkout
+    co = checkout
     hb = log --graph --pretty=format:'%Cred%h%Creset - %s %C(bold blue)<%an>%Creset %Cgreen(%cr) %C(yellow)%d%Creset' --abbrev-commit --date=relative --branches
     diffc = !sh -c 'git diff $1^..$1' -
     logc = !sh -c 'git log --name-status $1^..$1' -
     files = !sh -c 'git diff --name-status $1^ $1' -
 [core]
-	editor = vim
+    editor = vim
     pager = less
 [color]
-	ui = true
+    ui = true
 [credential]
-	helper = oskeychain
+    helper = oskeychain
 [push]
-	default = simple
+    default = simple
 [branch]
     autosetuprebase = always
