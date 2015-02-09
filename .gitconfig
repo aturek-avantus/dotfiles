@@ -2,19 +2,21 @@
 	name = Alex Turek
 	email = alex.turek@gmail.com
 [alias]
-	co = checkout
+    co = checkout
     hb = log --graph --pretty=format:'%Cred%h%Creset - %s %C(bold blue)<%an>%Creset %Cgreen(%cr) %C(yellow)%d%Creset' --abbrev-commit --date=relative --branches
     diffc = !sh -c 'git diff $1^..$1' -
     logc = !sh -c 'git log --name-status $1^..$1' -
     files = !sh -c 'git diff --name-status $1^ $1' -
+    branchdates = for-each-ref --sort=-committerdate refs/heads/ --format='%(color:red)%(committerdate:short)%(color:reset) %(color:green)(%(committerdate:relative))%(color:reset) %(color:yellow)%(refname:short)%(color:reset) - %(subject) - %(color:bold blue)<%(authorname)>%(color:reset)'
 [core]
-	editor = vim
+    editor = vim
     pager = less
+	ignorecase = false
 [color]
-	ui = true
+    ui = true
 [credential]
-	helper = oskeychain
+    helper = oskeychain
 [push]
-	default = simple
+    default = simple
 [branch]
     autosetuprebase = always
