@@ -7,9 +7,11 @@
     diffc = !sh -c 'git diff $1^..$1' -
     logc = !sh -c 'git log --name-status $1^..$1' -
     files = !sh -c 'git diff --name-status $1^ $1' -
+    branchdates = for-each-ref --sort=-committerdate refs/heads/ --format='%(color:red)%(committerdate:short)%(color:reset) %(color:green)(%(committerdate:relative))%(color:reset) %(color:yellow)%(refname:short)%(color:reset) - %(subject) - %(color:bold blue)<%(authorname)>%(color:reset)'
 [core]
     editor = vim
     pager = less
+    ignorecase = false
 [color]
     ui = true
 [credential]
@@ -18,3 +20,5 @@
     default = simple
 [branch]
     autosetuprebase = always
+[hub]
+    host = github.com
