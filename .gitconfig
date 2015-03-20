@@ -11,7 +11,7 @@
 [core]
     editor = vim
     pager = less
-	ignorecase = false
+    ignorecase = false
 [color]
     ui = true
 [credential]
@@ -20,3 +20,5 @@
     default = simple
 [branch]
     autosetuprebase = always
+[hub]
+    host = github.com
