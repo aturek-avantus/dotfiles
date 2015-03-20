@@ -16,7 +16,7 @@ GNU_PATH=$GNU_PATH:/usr/local/opt/grep/bin
 OPENSSL_PATH=/usr/local/Cellar/openssl/1.0.1g/bin
 SVN_PATH=/usr/local/Cellar/subversion/1.8.8/bin
 
-PATH=$BREW_PATH:$GNU_PATH:$OPENSSL_PATH:$SVN_PATH:$PATH:~/bin
+PATH=$BREW_PATH:$GNU_PATH:$OPENSSL_PATH:$SVN_PATH:$PATH:~/bin:./node_modules/.bin:.bin
 
 # PATH=/usr/local/bin:$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 # PATH=./env/bin:$PATH # If there's a virtualenv, use that for python
