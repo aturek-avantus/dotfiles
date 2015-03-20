@@ -33,13 +33,16 @@ MANPATH=$GNU_MANPATH:$OPENSSL_MANPATH:$MANPATH
 export TERM=xterm-color
 export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
 export CLICOLOR=1
-export LSCOLORS=FxFxCxDxBxegedabagacad
+export LSCOLORS=GxFxCxDxBxegedabagaced
 
 # this is here for GNU ls (the other is for BSD ls)
-export LS_COLORS="di=36;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:"
-#export LS_COLORS=$LSCOLORS
-export LS_OPTIONS='--color=auto'
+# export LS_COLORS="di=36;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:"
 
+# BSD ls
+# export LS_COLORS=$LSCOLORS
+# export LS_OPTIONS='--color=auto'
+
+# Unescaped
 # export PS1='\e[0;32m\u\e[0m@\e[0;34m\H \e[0;36m\w> \e[0m'
 export PS1='\[\e[0;32m\]\u\[\e[0m\]@\[\e[0;34m\]\H \[\e[0;36m\]\w> \[\e[0m\]'
 
@@ -62,9 +65,6 @@ source ~/.git-completion.bash
 
 alias ls="ls --color=auto" # this is for GNU ls
 alias grep="grep --color=auto" # this is for GNU grep
-
-### Added by the Heroku Toolbelt
-export PATH="$PATH:/usr/local/heroku/bin"
 
 # Set iterm window title to PWD
 export PROMPT_COMMAND='echo -ne "\033]0;${PWD/#$HOME/~}\007"'
