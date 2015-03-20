@@ -54,6 +54,7 @@ function filesindirs() {
   done;
 }
 
+alias git=hub
 alias fileslike="find * -type f | grep";
 alias fileswith="find * -type f -print0 | xargs -0 grep -l";
 alias gitst="git status";
