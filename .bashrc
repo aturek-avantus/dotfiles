@@ -1,3 +1,11 @@
+eval "$(rbenv init -)"
+
+alias bers='bundle exec rails server'
+alias be='bundle exec'
+alias binstall='bundle install --binstubs .bin --path .bundle'
+
+export GEMS=~/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems
+
 BREW_PATH=/usr/local/bin
 
 GNU_PATH=/usr/local/opt/coreutils/libexec/gnubin
