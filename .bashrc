@@ -1,11 +1,3 @@
-eval "$(rbenv init -)"
-
-alias bers='bundle exec rails server'
-alias be='bundle exec'
-alias binstall='bundle install --binstubs .bin --path .bundle'
-
-export GEMS=~/.rbenv/versions/2.0.0-p353/lib/ruby/gems/2.0.0/gems
-
 BREW_PATH=/usr/local/bin
 
 GNU_PATH=/usr/local/opt/coreutils/libexec/gnubin
@@ -75,6 +67,9 @@ export PROMPT_COMMAND='echo -ne "\033]0;${PWD/#$HOME/~}\007"'
 #    echo -ne "\033]0;"$*"\007"
 #}
 
+# Boot2docker/docker
+export BOOT2DOCKER_IP=$(boot2docker ip 2>/dev/null)
+
 clean_docker_containers ()
 {
   for container in `docker ps -a -q` ;
@@ -91,9 +86,16 @@ clean_docker_images ()
   done;
 }
 
+# Go
 export GOPATH=$HOME/go
 
-export BOOT2DOCKER_IP=$(boot2docker ip 2>/dev/null)
+# Ruby
+if [ `which rbenv` ] ; then
+  eval "$(rbenv init -)"
+  alias be='bundle exec'
+  alias bers='bundle exec rails server'
+  alias binstall='bundle install --binstubs .bin --path .bundle'
+  PATH=$PATH:.bin
+fi
 
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
