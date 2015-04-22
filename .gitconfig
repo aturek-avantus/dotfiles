@@ -1,6 +1,6 @@
 [user]
     name = Alex Turek
-    email = alex@whitepages.com
+    email = alex.turek@gmail.com
 [alias]
     co = checkout
     hb = log --graph --pretty=format:'%Cred%h%Creset - %s %C(bold blue)<%an>%Creset %Cgreen(%cr) %C(yellow)%d%Creset' --abbrev-commit --date=relative --branches
