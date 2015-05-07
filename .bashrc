@@ -69,8 +69,8 @@ export PROMPT_COMMAND='echo -ne "\033]0;${PWD/#$HOME/~}\007"'
 
 # Boot2docker/docker
 export BOOT2DOCKER_IP=$(boot2docker ip 2>/dev/null)
-export DOCKER_HOST=tcp://$(BOOT2DOCKER_IP):2376
-export DOCKER_CERT_PATH=/Users/aturek/.boot2docker/certs/boot2docker-vm
+export DOCKER_HOST=tcp://$BOOT2DOCKER_IP:2376
+export DOCKER_CERT_PATH=~/.boot2docker/certs/boot2docker-vm
 export DOCKER_TLS_VERIFY=1
 
 clean_docker_containers ()
