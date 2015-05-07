@@ -35,8 +35,8 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 # export LS_OPTIONS='--color=auto'
 
 # Unescaped
-# export PS1='\e[0;32m\u\e[0m@\e[0;34m\H \e[0;36m\w> \e[0m'
-export PS1='\[\e[0;32m\]\u\[\e[0m\]@\[\e[0;34m\]\H \[\e[0;36m\]\w> \[\e[0m\]'
+# export PS1='\e[1;32m\u\e[0m@\e[1;34m\H \e[1;36m\w> \e[0m'
+export PS1='\[\e[1;32m\]\u\[\e[0m\]@\[\e[1;34m\]\H \[\e[1;36m\]\w> \[\e[0m\]'
 
 function filesindirs() {
   for folder in `ls` ; do
