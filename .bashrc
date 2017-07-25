@@ -3,27 +3,24 @@ BREW_PATH=/usr/local/bin
 GNU_PATH=/usr/local/opt/coreutils/libexec/gnubin
 GNU_PATH=$GNU_PATH:/usr/local/opt/gnu-sed/libexec/gnubin
 GNU_PATH=$GNU_PATH:/usr/local/opt/gnu-tar/libexec/gnubin
-GNU_PATH=$GNU_PATH:/usr/local/opt/grep/bin
 
-OPENSSL_PATH=/usr/local/Cellar/openssl/1.0.1g/bin
-SVN_PATH=/usr/local/Cellar/subversion/1.8.8/bin
+OPENSSL_PATH=/usr/local/Cellar/openssl/1.0.2j/bin
 
 PATH=$BREW_PATH:$GNU_PATH:$OPENSSL_PATH:$SVN_PATH:$PATH:~/bin:./node_modules/.bin:.bin
 
-# PATH=/usr/local/bin:$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-# PATH=./env/bin:$PATH # If there's a virtualenv, use that for python
+PATH=./env/bin:$PATH # If there's a virtualenv, use that for python
 
 GNU_MANPATH=/usr/local/opt/coreutils/libexec/gnuman
 GNU_MANPATH=$GNU_MANPATH:/usr/local/opt/gnu-sed/libexec/gnuman
 GNU_MANPATH=$GNU_MANPATH:/usr/local/opt/gnu-tar/libexec/gnuman
 
-OPENSSL_MANPATH=/usr/local/Cellar/openssl/1.0.1g/share/man
+OPENSSL_MANPATH=/usr/local/Cellar/openssl/1.0.2d_1/share/man
 
 MANPATH=$GNU_MANPATH:$OPENSSL_MANPATH:$MANPATH
 
 # copied from http://unix.stackexchange.com/questions/148/colorizing-your-terminal-and-shell-environment
 export TERM=xterm-color
-export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
+# export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
@@ -35,7 +32,7 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 # export LS_OPTIONS='--color=auto'
 
 # Unescaped
-# export PS1='\e[1;32m\u\e[0m@\e[1;34m\H \e[1;36m\w> \e[0m'
+# export PS1='\e[0;32m\u\e[0m@\e[0;34m\H \e[0;36m\w> \e[0m'
 export PS1='\[\e[1;32m\]\u\[\e[0m\]@\[\e[1;34m\]\H \[\e[1;36m\]\w> \[\e[0m\]'
 
 function filesindirs() {
@@ -46,7 +43,6 @@ function filesindirs() {
   done;
 }
 
-alias git=hub
 alias fileslike="find * -type f | grep";
 alias fileswith="find * -type f -print0 | xargs -0 grep -l";
 alias gitst="git status";
@@ -56,22 +52,17 @@ alias xdg-open="open";
 
 source ~/.git-completion.bash
 
+HUB_BASH_COMPLETION="/usr/local/Cellar/hub/2.2.9/etc/bash_completion.d/hub.bash_completion.sh"
+if [ -f $HUB_BASH_COMPLETION ]; then
+    . $HUB_BASH_COMPLETION
+fi
+eval "$(hub alias -s)"
+
 alias ls="ls --color=auto" # this is for GNU ls
 alias grep="grep --color=auto" # this is for GNU grep
 
 # Set iterm window title to PWD
 export PROMPT_COMMAND='echo -ne "\033]0;${PWD/#$HOME/~}\007"'
-
-# Set iterm window by calling `title foo bar`
-#function title {
-#    echo -ne "\033]0;"$*"\007"
-#}
-
-# Boot2docker/docker
-export BOOT2DOCKER_IP=$(boot2docker ip 2>/dev/null)
-export DOCKER_HOST=tcp://$BOOT2DOCKER_IP:2376
-export DOCKER_CERT_PATH=~/.boot2docker/certs/boot2docker-vm
-export DOCKER_TLS_VERIFY=1
 
 clean_docker_containers ()
 {
@@ -102,5 +93,17 @@ if [ `which rbenv` ] ; then
 fi
 
 # Node (NVM)
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
+export NVM_DIR="/Users/aturek/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# Node (NPM)
+export NPM_CONFIG_PREFIX=
+
+# NPM is shit
+ulimit -n 2048
+
+# Github tokens
+. ~/.github-tokens
+
+# To make 'psql' work without -h commands
+export PGHOST=localhost
