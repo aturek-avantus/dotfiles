@@ -11,6 +11,8 @@
     cleanup = !git branch --merged | grep  -v -E '\\*|master' | xargs -n 1 git branch -d
     done = !~/scripts/git/done.sh $1
     hubdiff = !sh -c 'echo `git remote get-url origin | sed "s/\\.git$//"`/compare/$0...$1'
+    netdiff = !git diff $(git merge-base main $1)..$1
+    netdiffstat = !git diff --stat $(git merge-base main $1)..$1
 [core]
     editor = vim
     pager = less
