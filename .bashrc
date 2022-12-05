@@ -20,8 +20,6 @@ alias fileslike="find * -type f | grep";
 alias fileswith="find * -type f -print0 | xargs -0 grep -l";
 alias gitst="git status";
 alias gitdiff="git diff HEAD";
-alias web="open -a Google\ Chrome";
-alias xdg-open="open";
 
 source ~/.git-completion.bash
 
