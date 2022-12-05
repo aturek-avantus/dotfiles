@@ -9,7 +9,7 @@
     files = !sh -c 'git diff --name-status $1^ $1' -
     branchdates = for-each-ref --sort=-committerdate refs/heads/ --format='%(color:red)%(committerdate:short)%(color:reset) %(color:green)(%(committerdate:relative))%(color:reset) %(color:yellow)%(refname:short)%(color:reset) - %(subject) - %(color:bold blue)<%(authorname)>%(color:reset)'
     cleanup = !git branch --merged | grep  -v -E '\\*|master' | xargs -n 1 git branch -d
-    done = !~/scripts/git/done.sh $1
+    done = !git_done $1
     hubdiff = !sh -c 'echo `git remote get-url origin | sed "s/\\.git$//"`/compare/$0...$1'
     netdiff = !git diff $(git merge-base main $1)..$1
     netdiffstat = !git diff --stat $(git merge-base main $1)..$1
@@ -19,8 +19,6 @@
     ignorecase = false
 [color]
     ui = true
-[credential]
-    helper = oskeychain
 [push]
     default = simple
 [branch]
