@@ -40,3 +40,6 @@ git_done() {
 
   echo "done"
 }
+
+
+export AWS_DEFAULT_REGION=us-east-1
