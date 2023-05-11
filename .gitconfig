@@ -25,3 +25,5 @@
     autosetuprebase = always
 [hub]
     host = github.com
+[push]
+    autoSetupRemote = true
