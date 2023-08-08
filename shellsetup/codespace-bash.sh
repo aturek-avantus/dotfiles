@@ -23,5 +23,5 @@ if [[ "$AWS_CONFIG_ENCODED" != "" ]] ; then
     echo "$AWS_CONFIG_ENCODED" | base64 -d >> ~/.aws/credentials
 fi
 
-echo "Using AWS profile $REPO_NAME"
-export AWS_DEFAULT_PROFILE="$REPO_NAME"
+echo "Using AWS profile $REPO_NAME as default"
+echo "export AWS_DEFAULT_PROFILE=\"$REPO_NAME\"" >> ~/.bashrc
