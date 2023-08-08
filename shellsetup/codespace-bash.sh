@@ -1,6 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
 err() {
     >&2 echo "Error: ${*}"
     exit 1
@@ -25,3 +27,9 @@ fi
 
 echo "Using AWS profile $REPO_NAME as default"
 echo "export AWS_DEFAULT_PROFILE=\"$REPO_NAME\"" >> ~/.bashrc
+
+echo "Copying over dotfiles from $SCRIPT_DIR to $HOME"
+
+for file in .bashrc .gitconfig .gitignore .vimrc .git-completion.bash ; do
+    cat $SCRIPT_DIR/../$file >> ~/$file
+done
